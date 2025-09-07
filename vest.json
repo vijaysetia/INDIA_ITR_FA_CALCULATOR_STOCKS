@@ -1,0 +1,164 @@
+{
+  "MSFT": {
+    "vests": [
+      {
+        "vest_date": "2023-01-15",
+        "number_of_shares": 0,
+        "vest_price_optional": 245.50
+      },
+      {
+        "vest_date": "2023-06-15",
+        "number_of_shares": 0,
+        "vest_price_optional": 335.75
+      },
+      {
+        "vest_date": "2024-03-15",
+        "number_of_shares": 0
+      }
+    ]
+  },
+  "UBER": {
+    "vests": [
+      {
+        "vest_date": "2022-07-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-08-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-09-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-10-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-11-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-11-23",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2022-12-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-01-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-02-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-03-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-04-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-05-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-05-23",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-06-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-07-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-08-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-09-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-10-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-11-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-11-23",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2023-12-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-01-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-02-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-03-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-04-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-05-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-05-23",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-06-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-07-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-08-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-09-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-10-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-11-16",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-11-23",
+        "number_of_shares": 0
+      },
+      {
+        "vest_date": "2024-12-16",
+        "number_of_shares": 0
+      }
+    ]
+  }
+}

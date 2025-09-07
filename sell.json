@@ -1,0 +1,12 @@
+{
+  "UBER": {
+    "sales": [
+      {
+        "sell_date": "2024-06-15",
+        "purchase_date": "2024-01-16",
+        "number_of_shares_sold": 1,
+        "sell_price_inr": 5000.0
+      }
+    ]
+  }
+}

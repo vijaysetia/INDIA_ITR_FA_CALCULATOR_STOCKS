@@ -1,0 +1,23 @@
+{
+  "DELTA": {
+    "vests": [
+      {
+        "vest_date": "2023-01-01",
+        "number_of_shares": 50
+      },
+      {
+        "vest_date": "2023-06-01",
+        "number_of_shares": 30
+      }
+    ]
+  },
+  "ECHO": {
+    "vests": [
+      {
+        "vest_date": "2023-03-15",
+        "number_of_shares": 25,
+        "vest_price_optional": 80.00
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "BETA": {
+    "vests": [
+      {
+        "vest_date": "2023-03-01",
+        "number_of_shares": 50,
+        "vest_price_optional": 200.00
+      }
+    ]
+  }
+}
