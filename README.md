@@ -21,7 +21,7 @@ This utility is designed to facilitate the calculation of the FA schedule in the
 - Execute the script by specifying the relevant year as an argument. This will generate a `.csv` file corresponding to the selected year. The script can be reused in subsequent years by adding new vests and running it again with the updated year. For example, to prepare the return for **FY 2024–25**, use **2024** as the argument.  
 - The generated `.csv` file can then be uploaded to the **A3 section** of the FA schedule.
 
-**🧪 Comprehensive Testing**: This project includes a robust test suite with 15 test scenarios covering core calculations, command-line options, error handling, and edge cases. See the [Testing section](#-testing) for details.  
+**🧪 Comprehensive Testing**: This project includes a robust test suite with 24 test scenarios covering core calculations, command-line options, data fetching, error handling, and edge cases. See the [Testing section](#-testing) for details.  
 
 ### 🔎 Notes  
 - Ensure that the vest and sales data entered in the JSON files are accurate, as errors will directly impact the generated report.  
@@ -127,12 +127,16 @@ python3 fa_calculator.py -x -y --no-internet 2024
 
 ### **🧪 Testing**
 ```bash
-# Run all tests (recommended)
+# Run all tests including network calls (comprehensive)
 cd tests && python3 run_all_tests.py
+
+# Run offline tests only (faster, no network)
+cd tests && python3 run_all_tests.py --offline
 
 # Run specific test suites
 cd tests/core-tests && python3 run_core_tests.py
 cd tests/options-tests && python3 run_options_tests.py
+cd tests/data-fetching-tests && python3 run_data_fetching_tests.py
 ```
 
 ### **File Management**
@@ -416,7 +420,7 @@ python3 run_core_tests.py
 ```
 
 **Test Coverage:**
-- ✅ **15 comprehensive test scenarios**
+- ✅ **24 comprehensive test scenarios**
 - ✅ **Core Tests (5)**: Calculation accuracy and correctness
   - Basic vests with no sales
   - Vest price overrides (`vest_price_optional`)
@@ -429,32 +433,51 @@ python3 run_core_tests.py
   - Data directory handling
   - Error handling for invalid inputs
   - Option combinations and interactions
+- ✅ **Data Fetching Tests (9)**: Network operations and caching
+  - Stock price fetching and validation
+  - Exchange rate retrieval and caching
+  - Company information fetching
+  - Cache persistence and incremental updates
+  - Offline mode with cached data
+  - Invalid symbol and error handling
+  - API rate limiting compliance
 
 ### **📊 Test Results Example**
 ```bash
-# Run all tests
-cd tests && python3 run_all_tests.py
+# Run offline tests (fast)
+cd tests && python3 run_all_tests.py --offline
 ```
 ```
 🚀 FA Calculator - Comprehensive Test Suite
 ============================================================
 🧪 Running Core Functionality Tests...
-Found 5 test directories:
-  Running data1 (year 2023)... PASSED
-  Running data2 (year 2023)... PASSED
-  Running data3 (year 2023)... PASSED
-  Running data4 (year 2023)... PASSED
-  Running data5 (year 2023)... PASSED
+Found 5 test directories: ALL PASSED ✅
 
-🧪 Running Command-Line Options Tests...
-  Running help_option... PASSED
-  Running verbose_option... PASSED
-  Running skip_validation_option... PASSED
-  Running data_option... PASSED
-  Running combined_options... PASSED
-  [... 5 more tests ...]
+🧪 Running Command-Line Options Tests...  
+Found 10 test scenarios: ALL PASSED ✅
 
 🎉 ALL TEST SUITES PASSED!
+```
+
+```bash
+# Run all tests including network calls (comprehensive)
+cd tests && python3 run_all_tests.py
+```
+```
+🚀 FA Calculator - Comprehensive Test Suite
+============================================================
+⚠️  Data fetching tests make real network calls - please be patient
+
+🧪 Running Core Functionality Tests... ✅
+🧪 Running Command-Line Options Tests... ✅
+🧪 Running Data Fetching Tests...
+  Running stock_price_fetching... PASSED
+  Running exchange_rate_fetching... PASSED
+  Running cache_persistence... PASSED
+  [... 6 more network tests ...]
+
+🎉 ALL TEST SUITES PASSED!
+💡 Note: Cached data is available for future --no-internet runs
 ```
 
 ### **🔧 Manual Testing**
@@ -469,23 +492,24 @@ python3 fa_calculator.py --data tests/core-tests/data1 2023 --no-internet -x -y
 echo "n" | python3 clean_up_public_data.py AAPL
 ```
 
-**Note**: All tests use `--no-internet` to ensure fast, reproducible results. The `--no-internet` option itself is not tested since it's used by all tests.
+**Note**: Core and Options tests use `--no-internet` for fast, reproducible results. Data Fetching tests make real network calls to validate internet functionality, caching, and error handling.
 
 ### **📂 Test Organization**
 ```
 tests/
-├── run_all_tests.py      # Master test runner (runs all suites)
+├── run_all_tests.py      # Master test runner (--offline option available)
 ├── core-tests/           # Core functionality tests (5 scenarios)
 │   ├── run_core_tests.py # Core test runner
-│   ├── data1/            # Simple vest scenario
-│   ├── data2/            # Vest price override
-│   ├── data3/            # Partial sales
-│   ├── data4/            # Multiple vests
-│   └── data5/            # Peak after sale
-└── options-tests/        # CLI options tests (10 scenarios)
-    ├── run_options_tests.py  # Options test runner
-    ├── README.md         # Options test documentation
-    └── test_data/        # Auto-generated test data
+│   ├── data1/ - data5/   # Test scenarios with expected outputs
+│   └── README.md         # Core test documentation
+├── options-tests/        # CLI options tests (10 scenarios)
+│   ├── run_options_tests.py  # Options test runner
+│   ├── README.md         # Options test documentation
+│   └── test_data/        # Auto-generated test data
+└── data-fetching-tests/  # Network & caching tests (9 scenarios)
+    ├── run_data_fetching_tests.py  # Data fetching test runner
+    ├── README.md         # Data fetching test documentation
+    └── test_data/        # Test data with real API cache
 ```
 
 ### **⚡ Development Testing**
@@ -496,6 +520,12 @@ python3 -m py_compile *.py
 # Type checking (optional)
 pip3 install mypy
 mypy fa_calculator.py clean_up_pii.py
+
+# Quick offline validation
+cd tests && python3 run_all_tests.py --offline
+
+# Full validation including network tests  
+cd tests && python3 run_all_tests.py
 ```
 
 ## 🐛 **Troubleshooting**

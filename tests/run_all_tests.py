@@ -20,6 +20,8 @@ def run_test_suite(test_dir: str, test_name: str) -> bool:
         runner_script = test_path / "run_core_tests.py"
     elif test_dir == "options-tests":
         runner_script = test_path / "run_options_tests.py"
+    elif test_dir == "data-fetching-tests":
+        runner_script = test_path / "run_data_fetching_tests.py"
     else:
         runner_script = test_path / f"run_{test_dir.replace('-', '_')}_tests.py"
     
@@ -54,16 +56,31 @@ def run_test_suite(test_dir: str, test_name: str) -> bool:
 
 def main():
     """Run all test suites"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Run FA Calculator test suites")
+    parser.add_argument("--offline", action="store_true", 
+                       help="Skip data fetching tests (no network calls)")
+    args = parser.parse_args()
+    
     print("🚀 FA Calculator - Comprehensive Test Suite")
     print("=" * 60)
-    print("Running both core functionality and options tests...")
-    print()
     
     # Test suites to run
     test_suites = [
         ("core-tests", "Core Functionality Tests"),
-        ("options-tests", "Command-Line Options Tests")
+        ("options-tests", "Command-Line Options Tests"),
     ]
+    
+    if not args.offline:
+        test_suites.append(("data-fetching-tests", "Data Fetching Tests"))
+        print("Running core functionality, options, and data fetching tests...")
+        print("⚠️  Data fetching tests make real network calls - please be patient")
+    else:
+        print("Running core functionality and options tests (offline mode)...")
+        print("💡 Use without --offline to include data fetching tests")
+    
+    print()
     
     results = []
     total_passed = 0
